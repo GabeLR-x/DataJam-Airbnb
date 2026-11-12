@@ -98,7 +98,6 @@ src/common.py        shared helpers (key_numbers.csv writer, markdown tables)
 src/0X_*.py          the pipeline, run in order
 outputs/             figures, tables, key_numbers.csv, data_quality_report.md
 docs/decision_log.md decisions: what, alternatives, evidence, effect on results
-docs/ai_use_log.md   where AI was used and how we checked it
 ```
 
 ## 5. Rules we hold the analysis to
