@@ -1,0 +1,13 @@
+area,property_type,benchmark_price,hpi,change_1yr_pct,month,source
+Greater Vancouver,composite,1068600,305.7,-5.2,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 94)"
+Vancouver East,composite,1121600,350.2,-4.4,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 111)"
+Vancouver West,composite,1196600,286.1,-4.5,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 112)"
+Greater Vancouver,detached,1775200,331.3,-7.0,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 116)"
+Vancouver East,detached,1610700,359.1,-8.3,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 133)"
+Vancouver West,detached,2899700,305.3,-9.0,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 134)"
+Greater Vancouver,townhouse,1006500,352.7,-5.5,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 161)"
+Vancouver East,townhouse,1055800,353.5,0.4,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 177)"
+Vancouver West,townhouse,1285000,305.3,-5.7,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 178)"
+Greater Vancouver,apartment,673400,313.4,-5.9,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 181)"
+Vancouver East,apartment,635100,368.6,-3.9,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 197)"
+Vancouver West,apartment,751400,292.4,-3.8,2026-10,"GVR Stats Package October 2026, MLS HPI benchmark table (pdftotext line 198)"
