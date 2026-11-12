@@ -6,6 +6,11 @@ before-vs-after numbers produced by code (script named in each entry).
 
 Entries marked DRAFT were written by Claude Code and still need a team read.
 
+**Pitch shortlist.** The three decisions planned for the pitch are the scope
+filter (#4), the nightly-rate rule (#5), and either vacancy-tax treatment (#6)
+or property mix, whichever moves the recommendation more. Entries #1-#3 are
+appendix backup only: they do not change a result.
+
 ---
 
 ## #1 Privacy: drop more columns than the minimum list (DRAFT, Nov 11)
@@ -97,15 +102,23 @@ means "reviewed", not "booked".
 
 ---
 
-## #5 (B) World Cup: June prices are not used unadjusted (DRAFT, Nov 11; rate rule still to be agreed)
+## #5 (B) Nightly rate: three-season average, not the June price (DRAFT, Nov 12; numbers from script 04)
 
-**Decided (proposed).** The June `price` is not used as a 2027 nightly rate as
-it stands. Proposed base case: bring June prices down to the March level using
-the matched-listing change below; show the unadjusted June price only as an
-upper sensitivity.
+**Decided (proposed; team to confirm).** The June `price` is not used as a 2027
+nightly rate as it stands. Rule implemented in `src/04_nightly_rate.py`:
+- **Base case:** each listing's average of its March, June and September
+  prices (three seasons). Listings without all three: June price x 0.871, the
+  median ratio (average / June) on listings that have all three, flagged
+  `rate_adjusted`.
+- **Low scenario:** March level (own March price, else June x 0.740).
+- **High scenario:** June price, unadjusted.
 
-**Alternatives.** (a) Use June prices as they are. (b) Use the March price
-directly for matched listings only (loses unmatched listings). (c) Remove only
+Known bias: three dates are not twelve months, and June carries some event
+premium, so the average leans slightly high.
+
+**Alternatives.** (a) Use June prices as they are (now the high scenario).
+(b) Bring every price down to the March level (now the low scenario; March is
+low season, so it understates a year-round rate). (c) Remove only
 the "event" part of the change, about 10 points, read from the gap between June
 quotes inside the window (+35.5%) and after it (+25.3%).
 
@@ -124,13 +137,127 @@ rise inside and outside the stadium area, and the +25.3% on quotes dated after
 the tournament, both suggest most of it is seasonal or city-wide. The after-window
 group is a different, smaller set of listings, so the ~10 point gap is a hint,
 not a measurement. Consequence: a March-level rate is probably below the true
-year-round average, so the proposed base case is conservative.
+year-round average, which is why it is the low scenario and not the base case.
 
-**How it changed results.** Median nightly price on in-scope matched listings:
-$417.50 (June, unadjusted) -> $303 (March level). Any revenue built on the
-unadjusted June price would be about a third higher. Slides using this must
-credit both snapshots: "Data: Inside Airbnb, Vancouver, 15 June 2026 and
-21 March 2026, CC BY 4.0."
+**Evidence from script 04** (`outputs/04_rate_coverage.csv`,
+`04_rate_medians.csv`, `04_rate_ratio.csv`). Only quotes for stays under 30
+nights count as usable. Of the 3,285 in-scope listings: **2,099 (63.9%) have a
+usable price in all three snapshots**; 497 in June + September; 410 in June +
+March; 215 in June only; 64 have no usable June price and get no rate. On the
+2,099: median price $297 (March), $412 (June), $340.50 (September);
+three-season average $359.01. Ratio average / June: **0.871** overall (middle
+half of listings 0.779 to 0.966); Downtown + West End 0.889 (520 listings) vs
+all other areas 0.865 (1,579). The stadium area is not lower, so one citywide
+ratio is used. Areas with under 30 three-snapshot listings (medians not
+reliable): Oakridge 29, South Cambie 21, Shaughnessy 18, Fairview 12,
+Strathcona 10.
+
+**Limits.** 1,122 of the 3,221 rated listings (about a third) carry a scaled
+June price, not their own three prices. The ratio varies widely between
+listings, so it is a typical value, not a rule each one follows. Each price is
+one quote on one date, so day-of-week and length-of-stay differences between
+quotes are not controlled.
+
+**How it changed results.** Median nightly rate across all in-scope listings
+with a rate (3,221): **$408 (June, unadjusted) -> $354.69 (base case)**; low
+scenario $297. From script 03, on March-June matched listings: $417.50 (June)
+vs $303 (March). Revenue built on the unadjusted June price would be higher by
+the same proportion as the rate. Slides using these numbers must carry:
+"Data: Inside Airbnb, Vancouver, 21 March 2026, 15 June 2026 and 17 September
+2026, CC BY 4.0."
+
+---
+
+## #6 Vacancy taxes apply in the base case (DRAFT, Nov 12; numbers pending, script 06)
+
+**Decided.** Base case charges Vancouver's Empty Homes Tax (3% of value per
+year) and BC's Speculation and Vacancy Tax (1%, the rate for Canadian owners
+from 2026): about 4% of property value per year. `VACANCY_TAXES_APPLY = True`.
+
+**Alternatives.** (a) Taxes excluded (run as a sensitivity). (b) A hybrid
+strategy: mid-term stays of 30+ nights in low season and short-term in peak
+season, to meet the taxes' occupancy test (rented 30+ consecutive days for 6+
+months of the year).
+
+**Evidence.** The brief waives only the principal-residence requirement and
+says all other rules still apply; these are separate taxes. A short-term rental
+that is not owner-occupied does not count as occupied under either tax. DDD is
+assumed Canadian-owned, so the 1% SVT rate, not the foreign rate. Organizers
+have not yet answered.
+
+**How it changed results.** Yield with vs without the taxes: numbers pending
+(script 06). At about 4% of value per year this can flip the recommendation.
+
+---
+
+## #7 Budget: $10M covers all-in acquisition, no leverage (DRAFT, Nov 12; numbers pending, script 06)
+
+**Decided.** The $10M pays for purchase price + Property Transfer Tax +
+furnishing/setup. No borrowing. Operating costs are paid from 2027 revenue.
+
+**Alternatives.** (a) $10M covers purchase price only. (b) Levered purchase.
+
+**Evidence.** The brief gives no financing terms. Unlevered keeps property types
+comparable and matches the return metric (net operating income / all-in cost).
+
+**How it changed results.** Number of properties bought under all-in vs
+price-only budgeting: numbers pending (script 06).
+
+---
+
+## #8 Purchase-price source: GVR benchmark by area and type (DRAFT, Nov 12; numbers pending, script 06)
+
+**Decided.** Purchase price = Greater Vancouver Realtors benchmark price,
+October 2026, by area (Vancouver East / Vancouver West) x property type
+(`data/external/gvr_benchmark_prices.csv`).
+
+**Alternatives.** (a) One citywide average price. (b) Assessed values from the
+City's property tax report (see #9).
+
+**Evidence.** West vs East gap by type: apartment $751,400 vs $635,100;
+townhouse $1,285,000 vs $1,055,800; detached $2,899,700 vs $1,610,700. A single
+citywide price would hide these gaps.
+
+**Limits.** A benchmark is the price of a typical home, not of the homes that
+are run as short-term rentals. Prices are at area level only (East / West), not
+by neighbourhood.
+
+**How it changed results.** Numbers pending (script 06).
+
+---
+
+## #9 Property tax report join skipped (DRAFT, Nov 12; numbers pending, script 06)
+
+**Decided.** We do not join the City's property tax report. For property-tax
+and vacancy-tax calculations, assessed value is assumed equal to the GVR
+benchmark price (#8).
+
+**Alternatives.** Join assessed values by neighbourhood and property type.
+
+**Evidence.** The report's neighbourhood codes do not match ours, and "a join
+you cannot defend is worse than no join" (brief s.4).
+
+**Direction of bias.** 2026 assessments reflect mid-2025 values, before the
+roughly 4-9% price fall, so real assessed values, and the taxes based on them,
+may be higher than we assume.
+
+**How it changed results.** Numbers pending (script 06).
+
+---
+
+## #10 Organizer rulings used (DRAFT, Nov 12)
+
+**Decided.** We rely on two rulings from the DataJam help channel.
+- **Newer snapshots are allowed if credited (Nov 10).** We use the March and
+  September 2026 snapshots for the nightly rate (#5) and name every snapshot
+  date in the credit line of any slide that uses them.
+- **Strathcona / Downtown Eastside handling is our choice (Nov 8).** Inside
+  Airbnb splits the City's Strathcona into "Strathcona" and "Downtown
+  Eastside". How we map them is an open item below.
+
+**Alternatives.** June snapshot only.
+
+**How it changed results.** Makes #5 possible; effect reported there.
 
 ---
 
@@ -148,3 +275,7 @@ These came out of `02_data_quality.py` and need a decision before 03.
 - **Small areas:** Fairview (25) and Strathcona (14) have under 30 priced,
   short-term entire homes.
 - **Strathcona / Downtown Eastside mapping** to the City's 22 local areas.
+- **Neighbourhood -> Vancouver East / West mapping**, needed for the GVR join
+  in script 06. Goes in a CSV in `data/external/`.
+- **Airbnb `property_type` -> detached / townhouse / apartment mapping**, needed
+  for the GVR join in script 06. Goes in a CSV in `data/external/`.

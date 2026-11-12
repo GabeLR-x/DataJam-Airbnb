@@ -16,3 +16,5 @@ CLAUDE.md
 data/external/*.pdf
 # AI use log: kept local only (source for the AI-disclosure slide)
 docs/ai_use_log.md
+# Learning notebooks: local only (scripts in src/ are the source of every number)
+notebooks/

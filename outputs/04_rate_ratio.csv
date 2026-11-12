@@ -1,0 +1,4 @@
+group,listings,median_mar,median_jun,median_sep,median_3season_avg,median_ratio_avg_to_jun,p25_ratio,p75_ratio
+All areas,2099,297.0,412.0,340.5,359.01,0.871,0.779,0.966
+Downtown + West End,520,370.31,482.25,419.3,443.22,0.889,0.798,0.994
+All other areas,1579,271.5,372.0,304.5,322.51,0.865,0.777,0.959

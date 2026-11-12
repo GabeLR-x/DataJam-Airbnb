@@ -104,3 +104,14 @@ WORLD_CUP_CORE_AREAS = ["Downtown", "West End"]
 # Any number using the March file must carry this credit (organizer ruling).
 CREDIT_LINE_WITH_MARCH = ("Data: Inside Airbnb, Vancouver, 15 June 2026 and "
                           "21 March 2026, CC BY 4.0.")
+
+# --------------------------------------------------------------------------
+# Nightly rate from three snapshots (04_nightly_rate.py)
+# --------------------------------------------------------------------------
+# Scrape dates of the other two snapshots, used only as labels.
+MARCH_SNAPSHOT_DATE = "2026-03-21"       # low season, before the World Cup
+SEPTEMBER_SNAPSHOT_DATE = "2026-09-17"   # shoulder season, after the World Cup
+# Any number using all three snapshots must carry this credit (organizer
+# ruling, Nov 10: newer data is allowed if the credits name it).
+CREDIT_LINE_THREE_SNAPSHOTS = ("Data: Inside Airbnb, Vancouver, 21 March 2026, "
+                               "15 June 2026 and 17 September 2026, CC BY 4.0.")
