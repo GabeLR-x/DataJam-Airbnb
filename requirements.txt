@@ -1,0 +1,6 @@
+# Pinned to the versions the outputs were produced with (Python 3.13).
+pandas==3.1.1
+numpy==2.5.4
+matplotlib==3.11.2
+pyarrow==26.0.1      # parquet read/write for data/processed/
+geopandas==1.2.0     # only needed for the neighbourhood map

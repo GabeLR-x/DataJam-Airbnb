@@ -1,0 +1,15 @@
+# Raw + processed data: large, re-downloadable from Inside Airbnb (see README)
+data/raw/
+data/processed/
+# Organizer's brief: not ours to publish
+docs/*.pdf
+# Python / OS clutter
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+.DS_Store
+# Claude Code instructions: kept local only (share with teammate directly)
+CLAUDE.md
+.claude/
+.Rhistory

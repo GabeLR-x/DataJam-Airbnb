@@ -1,0 +1,29 @@
+name,value,unit,script,note
+listings_raw,6509,listings,01_load_clean.py,"June snapshot, before any scope filter"
+calendar_rows_clean,2375786,listing-nights,01_load_clean.py,after dropping ids not in listings
+calendar_ids_not_in_listings,16,listing ids,01_load_clean.py,dropped: cannot be joined
+reviews_rows_clean,323898,reviews,01_load_clean.py,after dropping ids not in listings
+review_ids_not_in_listings,3,listing ids,01_load_clean.py,dropped: cannot be joined
+price_missing_share,10.2,% of listings,02_data_quality.py,"June snapshot, all listings"
+price_parse_failures,0.0,listings,02_data_quality.py,price text that did not parse
+price_quote_in_world_cup_share,75.3,% of priced listings,02_data_quality.py,"quoted check-in date within Jun 13 - Jul 7, 2026"
+price_quote_30plus_nights_share,23.8,% of priced listings,02_data_quality.py,price is a per-night figure from a 30+ night quote
+price_median_all_priced,318.0,CAD/night,02_data_quality.py,"all priced listings, unfiltered, World Cup period; not a 2027 rate"
+mid_term_listings_share,29.6,% of listings,02_data_quality.py,minimum_nights >= 30
+neighbourhoods_small_n,2.0,areas,02_data_quality.py,< 30 priced short-term entire homes
+scraped_july6_share,33.1,% of listings,02_data_quality.py,source = previous scrape; later 365-day windows
+calendar_unavailable_share,52.8,% of listing-nights,02_data_quality.py,UPPER BOUND on booked share; unavailable = booked OR host-blocked; NOT occupancy
+licence_filled_share,82.5,% of listings,02_data_quality.py,ESTIMATE: any text in the licence field; not verified against the City register
+has_licence_share,75.7,% of listings,02_data_quality.py,ESTIMATE: text shaped like a municipal licence number; not verified
+scope_listings,3285.0,listings,03_scope_and_price.py,"entire home, minimum_nights < 30, >= 1 review in last 12 months"
+scope_listings_with_price,3230.0,listings,03_scope_and_price.py,in scope and priced
+scope_small_n_areas,2.0,areas,03_scope_and_price.py,< 30 priced in-scope listings
+july6_activity_pass_rate,85.0,% of short-term entire homes,03_scope_and_price.py,July 6 scrape group; >= 1 review in last 12 months
+june_activity_pass_rate,85.2,% of short-term entire homes,03_scope_and_price.py,June 15-16 scrape groups
+july6_share_of_scope,5.5,% of in-scope listings,03_scope_and_price.py,July 6 group left in scope
+wc_matched_listings,3005.0,listings,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
+wc_median_pct_change_all,34.0,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
+wc_median_pct_change_core,33.3,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
+wc_median_pct_change_other,34.3,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
+wc_median_pct_change_in_scope,34.9,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
+wc_median_pct_change_quote_after_window,25.3,%,03_scope_and_price.py,same match; June quote dated after Jul 7 (seasonality without the event; different listings)

@@ -1,0 +1,16 @@
+table,step,rows,cols,note
+listings,1 loaded raw,6509,90,
+listings,2 licence flags derived,6509,94,"has_licence=4,925"
+listings,3 private columns dropped,6509,80,
+listings,4 all-empty columns dropped,6509,68,12 columns
+listings,5 dates parsed,6509,68,failures=0
+listings,6 price parsed,6509,71,"price present=5,845"
+listings,7 numeric columns converted,6509,71,failures=0
+listings,8 flags added (final),6509,73,
+calendar,1 loaded raw,2381626,5,
+calendar,2 ids not in listings dropped,2375786,5,"16 ids, 5,840 rows"
+calendar,3 parsed (final),2375786,5,unexpected 'available' values=0
+reviews,1 loaded raw,323903,6,
+reviews,2 private columns dropped,323903,3,
+reviews,3 ids not in listings dropped,323898,3,"3 ids, 5 rows"
+reviews,4 parsed (final),323898,3,

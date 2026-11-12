@@ -1,0 +1,25 @@
+neighbourhood,0 all listings,1 entire home,2 + minimum_nights < 30,3 + >= 1 review in last 12 months,4 ...of which have a price
+Downtown,1534,1422,910,799,786
+Downtown Eastside,423,398,336,293,292
+Kitsilano,440,386,269,229,223
+Kensington-Cedar Cottage,410,329,275,221,217
+Hastings-Sunrise,345,251,214,179,177
+Renfrew-Collingwood,269,209,185,170,168
+Riley Park,290,245,202,165,163
+Mount Pleasant,394,298,166,136,132
+Grandview-Woodland,253,219,163,132,128
+Dunbar Southlands,308,181,160,128,127
+Sunset,228,179,156,127,125
+Victoria-Fraserview,190,152,141,126,123
+Marpole,193,126,93,84,82
+West End,295,263,100,81,81
+Killarney,118,95,84,73,73
+Arbutus Ridge,149,97,81,67,66
+West Point Grey,145,93,81,67,65
+Oakridge,115,69,61,54,53
+Kerrisdale,93,57,55,48,47
+Shaughnessy,95,57,47,41,39
+South Cambie,62,46,36,31,30
+Fairview,136,128,27,19,19
+Strathcona,24,22,15,15,14
+ALL AREAS,6509,5322,3857,3285,3230

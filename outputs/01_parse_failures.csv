@@ -1,0 +1,12 @@
+field,parse_failures
+listings.last_scraped,0
+listings.calendar_last_scraped,0
+listings.first_review,0
+listings.last_review,0
+listings.price_quote_checkin_date,0
+listings.price_quote_checkout_date,0
+calendar.date,0
+reviews.date,0
+listings.price,0
+listings.numeric_columns,0
+calendar.available,0
