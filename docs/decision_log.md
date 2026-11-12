@@ -102,25 +102,32 @@ means "reviewed", not "booked".
 
 ---
 
-## #5 (B) Nightly rate: three-season average, not the June price (DRAFT, Nov 12; numbers from script 04)
+## #5 (B) Nightly rate: March + June average, not the June price (DRAFT, Nov 12; numbers from script 04)
 
-**Decided (proposed; team to confirm).** The June `price` is not used as a 2027
-nightly rate as it stands. Rule implemented in `src/04_nightly_rate.py`:
-- **Base case:** each listing's average of its March, June and September
-  prices (three seasons). Listings without all three: June price x 0.871, the
-  median ratio (average / June) on listings that have all three, flagged
+**Decided.** The June `price` is not used as a 2027 nightly rate as it stands.
+Rule implemented in `src/04_nightly_rate.py`, using two snapshots (March and
+June 2026):
+- **Base case:** each listing's average of its March and June prices.
+  Listings with a June price only: June price x 0.871, the median ratio
+  (March+June average / June) on listings that have both, flagged
   `rate_adjusted`.
-- **Low scenario:** March level (own March price, else June x 0.740).
-- **High scenario:** June price, unadjusted.
+- **Low scenario:** March level (own March price, else June x 0.741).
+- **High scenario:** June price as it is.
 
-Known bias: three dates are not twelve months, and June carries some event
-premium, so the average leans slightly high.
+Known bias: two dates are not twelve months. March is low season and June is
+peak season with some event premium, and each counts equally, so the average
+is a midpoint between the two, not a measured year-round rate.
 
 **Alternatives.** (a) Use June prices as they are (now the high scenario).
 (b) Bring every price down to the March level (now the low scenario; March is
-low season, so it understates a year-round rate). (c) Remove only
-the "event" part of the change, about 10 points, read from the gap between June
-quotes inside the window (+35.5%) and after it (+25.3%).
+low season, so it understates a year-round rate). (c) Remove only the "event"
+part of the change, about 10 points, read from the gap between June quotes
+inside the window (+35.5%) and after it (+25.3%). (d) **Three snapshots (March,
+June, September 2026): tested, about 1% difference, dropped.** That version
+(git commit 9f2b819) gave a base-case median rate of $354.69 vs $359.71 now,
+and the same ratio to June, 0.871, on the 2,099 listings priced in all three.
+September added a third file and cut coverage from 76.4% to 63.9% of in-scope
+listings without changing the answer.
 
 **Evidence** (`outputs/03_world_cup_price_check.csv`). Same listing ids in the
 Mar 21 and June snapshots, both priced, both quotes for stays under 30 nights:
@@ -141,30 +148,27 @@ year-round average, which is why it is the low scenario and not the base case.
 
 **Evidence from script 04** (`outputs/04_rate_coverage.csv`,
 `04_rate_medians.csv`, `04_rate_ratio.csv`). Only quotes for stays under 30
-nights count as usable. Of the 3,285 in-scope listings: **2,099 (63.9%) have a
-usable price in all three snapshots**; 497 in June + September; 410 in June +
-March; 215 in June only; 64 have no usable June price and get no rate. On the
-2,099: median price $297 (March), $412 (June), $340.50 (September);
-three-season average $359.01. Ratio average / June: **0.871** overall (middle
-half of listings 0.779 to 0.966); Downtown + West End 0.889 (520 listings) vs
-all other areas 0.865 (1,579). The stadium area is not lower, so one citywide
-ratio is used. Areas with under 30 three-snapshot listings (medians not
-reliable): Oakridge 29, South Cambie 21, Shaughnessy 18, Fairview 12,
-Strathcona 10.
+nights count as usable. Of the 3,285 in-scope listings: **2,509 (76.4%) have a
+usable price in both March and June**; 712 (21.7%) in June only; 64 (1.9%)
+have no usable June price and get no rate. On the 2,509: median price $303
+(March), $417.50 (June); March+June average $368.50. Ratio average / June:
+**0.871** overall (middle half of listings 0.803 to 0.957); Downtown + West End
+0.875 (670 listings) vs all other areas 0.869 (1,839). The stadium area is not
+lower, so one citywide ratio is used. Areas with under 30 listings priced in
+both (medians not reliable): Shaughnessy 25, South Cambie 25, Fairview 16,
+Strathcona 12.
 
-**Limits.** 1,122 of the 3,221 rated listings (about a third) carry a scaled
-June price, not their own three prices. The ratio varies widely between
-listings, so it is a typical value, not a rule each one follows. Each price is
-one quote on one date, so day-of-week and length-of-stay differences between
-quotes are not controlled.
+**Limits.** 712 of the 3,221 rated listings (about a fifth) carry a scaled June
+price, not their own two prices. The ratio varies between listings, so it is a
+typical value, not a rule each one follows. Each price is one quote on one
+date, so day-of-week and length-of-stay differences between quotes are not
+controlled. These are asking prices, not prices paid.
 
 **How it changed results.** Median nightly rate across all in-scope listings
-with a rate (3,221): **$408 (June, unadjusted) -> $354.69 (base case)**; low
-scenario $297. From script 03, on March-June matched listings: $417.50 (June)
-vs $303 (March). Revenue built on the unadjusted June price would be higher by
-the same proportion as the rate. Slides using these numbers must carry:
-"Data: Inside Airbnb, Vancouver, 21 March 2026, 15 June 2026 and 17 September
-2026, CC BY 4.0."
+with a rate (3,221): **$408 (June as it is) -> $359.71 (base case)**; low
+scenario $297. Revenue built on the June price as it is would be higher by the
+same proportion as the rate. Slides using these numbers must carry: "Data:
+Inside Airbnb, Vancouver, 15 June 2026 and 21 March 2026, CC BY 4.0."
 
 ---
 
@@ -248,9 +252,11 @@ may be higher than we assume.
 ## #10 Organizer rulings used (DRAFT, Nov 12)
 
 **Decided.** We rely on two rulings from the DataJam help channel.
-- **Newer snapshots are allowed if credited (Nov 10).** We use the March and
-  September 2026 snapshots for the nightly rate (#5) and name every snapshot
-  date in the credit line of any slide that uses them.
+- **Other Inside Airbnb snapshots are allowed if credited (Nov 10):** "Any data
+  gathered from the sources we have provided is considered valid." We use the
+  March 2026 snapshot for the nightly rate (#5) and name both snapshot dates
+  in the credit line of any slide that uses it. The September 2026 snapshot
+  was tested and dropped (#5, alternative d).
 - **Strathcona / Downtown Eastside handling is our choice (Nov 8).** Inside
   Airbnb splits the City's Strathcona into "Strathcona" and "Downtown
   Eastside". How we map them is an open item below.

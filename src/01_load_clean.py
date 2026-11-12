@@ -2,7 +2,7 @@
 01_load_clean.py: load the June 2026 snapshot, clean it, save to data/processed/.
 
 Scope: ONLY the primary snapshot at the top level of data/raw/ (the brief's
-"15 June 2026" data). The March and September snapshots are handled later.
+"15 June 2026" data). The March snapshot is used later (scripts 03 and 04).
 
 This script CLEANS, it does not FILTER. No listing is removed for being a
 private room, a mid-term rental, inactive or an outlier. Those are scope

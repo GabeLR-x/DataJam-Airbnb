@@ -27,17 +27,17 @@ wc_median_pct_change_core,33.3,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same
 wc_median_pct_change_other,34.3,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
 wc_median_pct_change_in_scope,34.9,%,03_scope_and_price.py,"Mar 21 -> Jun 2026, same listing ids, both quotes < 30 nights; World Cup + seasonality, not WC alone"
 wc_median_pct_change_quote_after_window,25.3,%,03_scope_and_price.py,same match; June quote dated after Jul 7 (seasonality without the event; different listings)
-rate_listings_all_three,2099.0,listings,04_nightly_rate.py,"in-scope listings with a usable price (quote < 30 nights) in Mar, Jun and Sep 2026"
-rate_listings_adjusted,1122.0,listings,04_nightly_rate.py,June price x overall ratio (missing Mar or Sep)
+rate_listings_mar_jun,2509.0,listings,04_nightly_rate.py,in-scope listings with a usable price (quote < 30 nights) in both Mar and Jun 2026
+rate_listings_mar_jun_share,76.4,% of in-scope listings,04_nightly_rate.py,in-scope listings with a usable price (quote < 30 nights) in both Mar and Jun 2026
+rate_listings_adjusted,712.0,listings,04_nightly_rate.py,June only: June price x overall ratio
 rate_listings_no_rate,64.0,listings,04_nightly_rate.py,in scope but no usable June price
-rate_median_mar,297.0,CAD/night,04_nightly_rate.py,"in-scope listings with a usable price (quote < 30 nights) in Mar, Jun and Sep 2026"
-rate_median_jun,412.0,CAD/night,04_nightly_rate.py,"in-scope listings with a usable price (quote < 30 nights) in Mar, Jun and Sep 2026; World Cup period"
-rate_median_sep,340.5,CAD/night,04_nightly_rate.py,"in-scope listings with a usable price (quote < 30 nights) in Mar, Jun and Sep 2026"
-rate_median_3season_avg,359.01,CAD/night,04_nightly_rate.py,"in-scope listings with a usable price (quote < 30 nights) in Mar, Jun and Sep 2026; leans slightly high"
-rate_ratio_avg_to_jun,0.871,ratio,04_nightly_rate.py,median of per-listing (3-season avg / June)
-rate_ratio_avg_to_jun_core,0.889,ratio,04_nightly_rate.py,Downtown + West End
-rate_ratio_avg_to_jun_other,0.865,ratio,04_nightly_rate.py,all other areas
-rate_ratio_mar_to_jun,0.74,ratio,04_nightly_rate.py,median of per-listing (March / June); low scenario
-rate_base_median,354.69,CAD/night,04_nightly_rate.py,"base case, all in-scope listings with a rate"
+rate_median_mar,303.0,CAD/night,04_nightly_rate.py,in-scope listings with a usable price (quote < 30 nights) in both Mar and Jun 2026
+rate_median_jun,417.5,CAD/night,04_nightly_rate.py,in-scope listings with a usable price (quote < 30 nights) in both Mar and Jun 2026; World Cup period
+rate_median_mar_jun_avg,368.5,CAD/night,04_nightly_rate.py,in-scope listings with a usable price (quote < 30 nights) in both Mar and Jun 2026
+rate_ratio_avg_to_jun,0.871,ratio,04_nightly_rate.py,median of per-listing (Mar+Jun avg / June)
+rate_ratio_avg_to_jun_core,0.875,ratio,04_nightly_rate.py,Downtown + West End
+rate_ratio_avg_to_jun_other,0.869,ratio,04_nightly_rate.py,all other areas
+rate_ratio_mar_to_jun,0.741,ratio,04_nightly_rate.py,median of per-listing (March / June); low scenario
+rate_base_median,359.71,CAD/night,04_nightly_rate.py,"base case, all in-scope listings with a rate"
 rate_low_median,297.0,CAD/night,04_nightly_rate.py,low scenario: March level
-rate_high_median,408.0,CAD/night,04_nightly_rate.py,high scenario: June unadjusted
+rate_high_median,408.0,CAD/night,04_nightly_rate.py,high scenario: June as it is

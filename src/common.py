@@ -17,8 +17,9 @@ def record_key_numbers(rows, script):
     """Insert-or-replace rows in outputs/key_numbers.csv.
 
     rows: list of (name, value, unit, note).
-    Replacing by `name` (instead of appending) keeps the file idempotent:
-    re-running a script updates its numbers rather than duplicating them.
+    All rows previously written by the same script are removed first, so a
+    re-run replaces that script's numbers and a renamed or dropped figure
+    never lingers as a stale row.
     """
     new = pd.DataFrame(rows, columns=["name", "value", "unit", "note"])
     new["script"] = script
@@ -26,7 +27,7 @@ def record_key_numbers(rows, script):
     config.OUTPUTS.mkdir(parents=True, exist_ok=True)
     if config.KEY_NUMBERS.exists():
         old = pd.read_csv(config.KEY_NUMBERS, dtype=str)
-        old = old[~old["name"].isin(new["name"])]
+        old = old[(old["script"] != script) & ~old["name"].isin(new["name"])]
         new = pd.concat([old, new.astype(str)], ignore_index=True)
     new.to_csv(config.KEY_NUMBERS, index=False)
 

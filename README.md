@@ -24,7 +24,8 @@ from Inside Airbnb, <https://insideairbnb.com/get-the-data/>, section
 **Vancouver, British Columbia, Canada**. Older snapshots are under
 "show archived data" in that section.
 
-We use three snapshots. For each one download these four files:
+We use two snapshots: June 2026 (all four files) and March 2026 (only
+`listings.csv.gz` is read). The four files are:
 
 | File | Which one |
 |---|---|
@@ -45,11 +46,10 @@ https://data.insideairbnb.com/canada/bc/vancouver/DATE/visualisations/neighbourh
 
 Where each snapshot goes:
 
-| Snapshot (`DATE`) | Put the four files in | Role |
+| Snapshot (`DATE`) | Put the files in | Role |
 |---|---|---|
 | **2026-06-15** | `data/raw/` (top level) | **Primary.** The snapshot named in the case brief. Scraped during the FIFA World Cup |
-| 2026-03-21 | `data/raw/pre_worldcup_2026-03-21/` | Pre-World Cup baseline, to measure the event price premium on matched listings |
-| 2026-09-17 | `data/raw/validation_2026-09-17/` | Post-World Cup, for validation |
+| 2026-03-21 | `data/raw/pre_worldcup_2026-03-21/` | Low season, before the World Cup. Only `listings.csv.gz` is needed: price check (step 3) and nightly rate (step 4) on matched listings |
 
 Keep the file names exactly as downloaded. Resulting layout:
 
@@ -57,9 +57,7 @@ Keep the file names exactly as downloaded. Resulting layout:
 data/raw/
   listings.csv.gz  calendar.csv.gz  reviews.csv.gz  neighbourhoods.geojson
   pre_worldcup_2026-03-21/
-    listings.csv.gz  calendar.csv.gz  reviews.csv.gz  neighbourhoods.geojson
-  validation_2026-09-17/
-    listings.csv.gz  calendar.csv.gz  reviews.csv.gz  neighbourhoods.geojson
+    listings.csv.gz
 ```
 
 The summary files (`listings.csv`, `reviews.csv`, `neighbourhoods.csv`) are not
@@ -83,7 +81,7 @@ its headline figures to `outputs/key_numbers.csv`.
 | 4 | `python src/04_nightly_rate.py` | `data/processed/listings_rate.parquet`, `outputs/04_rate_coverage.csv`, `outputs/04_rate_medians.csv`, `outputs/04_rate_ratio.csv` | done |
 | later | revenue, returns, portfolio and risk scripts | | not written yet |
 
-Steps 1 and 2 use only the June snapshot. Step 3 also reads `listings.csv.gz` from the March snapshot; step 4 reads it from the March and September snapshots (price columns only).
+Steps 1 and 2 use only the June snapshot. Step 3 also reads `listings.csv.gz` from the March snapshot; step 4 reads the same March file (price columns only) and averages March and June prices.
 
 ## 4. Repo layout
 
