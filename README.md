@@ -79,9 +79,10 @@ its headline figures to `outputs/key_numbers.csv`.
 | 2 | `python src/02_data_quality.py` | `outputs/data_quality_report.md`, `outputs/dq_listings_per_neighbourhood.csv` | done |
 | 3 | `python src/03_scope_and_price.py` | `data/processed/listings_scope.parquet`, `outputs/03_scope_counts.csv`, `outputs/03_dormant_check.csv`, `outputs/03_world_cup_price_check.csv` | done |
 | 4 | `python src/04_nightly_rate.py` | `data/processed/listings_rate.parquet`, `outputs/04_rate_coverage.csv`, `outputs/04_rate_medians.csv`, `outputs/04_rate_ratio.csv` | done |
-| later | revenue, returns, portfolio and risk scripts | | not written yet |
+| 5 | `python src/05_revenue.py` | `data/processed/listings_revenue.parquet`, `outputs/05_revenue_by_neighbourhood.csv` and `.png`, `outputs/05_revenue_by_bedrooms.csv`, `outputs/05_revenue_sensitivity.csv` | done |
+| later | returns, portfolio and risk scripts | | not written yet |
 
-Steps 1 and 2 use only the June snapshot. Step 3 also reads `listings.csv.gz` from the March snapshot; step 4 reads the same March file (price columns only) and averages March and June prices.
+Steps 1 and 2 use only the June snapshot. Step 3 also reads `listings.csv.gz` from the March snapshot; step 4 reads the same March file (price columns only) and averages March and June prices. Step 5 multiplies estimated nights booked (from reviews) by that rate; it reads no raw file.
 
 ## 4. Repo layout
 

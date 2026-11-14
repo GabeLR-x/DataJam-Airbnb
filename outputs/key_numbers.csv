@@ -41,3 +41,17 @@ rate_ratio_mar_to_jun,0.741,ratio,04_nightly_rate.py,median of per-listing (Marc
 rate_base_median,359.71,CAD/night,04_nightly_rate.py,"base case, all in-scope listings with a rate"
 rate_low_median,297.0,CAD/night,04_nightly_rate.py,low scenario: March level
 rate_high_median,408.0,CAD/night,04_nightly_rate.py,high scenario: June as it is
+occupancy_formula_match_share,100.0,% of in-scope listings,05_revenue.py,our constants reproduce Inside Airbnb estimated_occupancy_l365d
+nights_base_median,102.0,nights/yr,05_revenue.py,estimated from reviews; review rate 50%
+nights_low_median,71.0,nights/yr,05_revenue.py,review rate 72%
+nights_high_median,167.0,nights/yr,05_revenue.py,review rate 30.5%
+nights_capped_share,14.6,% of in-scope listings,05_revenue.py,at the 255-night cap in the base case
+revenue_listings,3221.0,listings,05_revenue.py,in scope with a nightly rate
+revenue_base_median,38104.0,CAD/yr,05_revenue.py,"estimated revenue per listing, base case"
+revenue_base_p25,15140.0,CAD/yr,05_revenue.py,base case
+revenue_base_p75,65538.0,CAD/yr,05_revenue.py,base case
+revenue_rate_low_median,32017.0,CAD/yr,05_revenue.py,base nights x March-level rate
+revenue_rate_high_median,42547.0,CAD/yr,05_revenue.py,base nights x June rate
+revenue_nights_low_median,26750.0,CAD/yr,05_revenue.py,review rate 72% x base rate
+revenue_nights_high_median,56084.0,CAD/yr,05_revenue.py,review rate 30.5% x base rate
+revenue_ratio_to_inside_airbnb,0.871,ratio,05_revenue.py,median of per-listing (ours / estimated_revenue_l365d)

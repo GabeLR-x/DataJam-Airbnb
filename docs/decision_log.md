@@ -267,6 +267,53 @@ may be higher than we assume.
 
 ---
 
+## #11 Revenue method: Inside Airbnb's review-based nights x our nightly rate (DRAFT, Nov 13; numbers from script 05)
+
+**Decided.** Estimated annual revenue per listing = estimated nights booked x
+our base nightly rate (#5). Nights booked are Inside Airbnb's
+`estimated_occupancy_l365d`, which we first rebuilt ourselves: reviews in the
+last 12 months / 50% review rate x 3 nights per stay (or the listing's minimum
+stay if longer), capped at 255 nights (70% of a year). Our formula matches the
+field on 100.0% of the 3,285 in-scope listings, and it is the method Inside
+Airbnb publishes on its "Data Assumptions" page. The three constants are in
+`config.py`. This is an estimate: reviews are a proxy for stays, and the rate
+is an asking price, not a price paid.
+
+**Alternatives.**
+- (a) Use Inside Airbnb's `estimated_revenue_l365d` as it is. Rejected: it is
+  the same nights x the June price, quoted in peak season during the World Cup.
+- (b) Count unavailable calendar nights as booked. Rejected: an unavailable
+  night may be blocked by the host; this gives an upper bound at best.
+- (c) Bound nights by 365 minus `availability_365`. Not done: that field looks
+  365 days forward, reviews look 365 days back, so it does not bound past
+  bookings.
+- (d) A different review rate. Kept as a sensitivity: 72% and 30.5%, the two
+  published figures Inside Airbnb's 50% sits between.
+
+**Evidence** (`src/05_revenue.py`, `outputs/05_revenue_sensitivity.csv`).
+- Median estimated nights: 102 a year in the base case; 14.6% of listings are
+  at the 255-night cap.
+- Check against Inside Airbnb: on 3,221 listings the median of ours / theirs
+  is 0.871 (p25 0.825, p75 0.928). That equals the rate ratio in #5, so the
+  whole gap is our price adjustment.
+- Sensitivity of the median estimated revenue (base $38,104):
+
+| Case | Median estimated revenue | vs base |
+|---|---|---|
+| Nightly rate low (March level) | $32,017 | -16.0% |
+| Nightly rate high (June as it is) | $42,547 | +11.7% |
+| Review rate 72% (median 71 nights) | $26,750 | -29.8% |
+| Review rate 30.5% (median 167 nights) | $56,084 | +47.2% |
+
+**How it changed results.** Median estimated revenue is $38,104 per listing
+(p25 $15,140, p75 $65,538) on 3,221 listings; 64 in-scope listings have no
+rate and no estimate. Using Inside Airbnb's figure unchanged would be about
+13% higher. The review rate is the largest single uncertainty, larger than the
+nightly rate. Known limits: nights are from the 12 months before the scrape
+and stand in for 2027; a listing open for less than 12 months is understated.
+
+---
+
 ## Open items found in data quality (not yet decided)
 
 These came out of `02_data_quality.py` and need a decision before 03.
@@ -275,8 +322,8 @@ These came out of `02_data_quality.py` and need a decision before 03.
   listings were quoted for a check-in inside the World Cup window, and 23.8% of
   quotes are for 30+ night stays. 336 of the 337 prices under $30/night are 30+
   night quotes.
-- **`estimated_revenue_l365d` is missing for exactly the listings with no
-  `price`**, which suggests it is built from `price` and inherits any inflation.
+- (Resolved in #11) `estimated_revenue_l365d` is Inside Airbnb's estimated
+  nights x the June `price`, so it inherits the June price level.
 - (Resolved in #4) The July 6 "previous scrape" group: no separate removal rule.
 - **Small areas:** Fairview (25) and Strathcona (14) have under 30 priced,
   short-term entire homes.

@@ -103,3 +103,26 @@ WORLD_CUP_CORE_AREAS = ["Downtown", "West End"]
 # Any number using the March file must carry this credit (organizer ruling).
 CREDIT_LINE_WITH_MARCH = ("Data: Inside Airbnb, Vancouver, 15 June 2026 and "
                           "21 March 2026, CC BY 4.0.")
+
+# --------------------------------------------------------------------------
+# Nights booked (05_revenue.py). Reviews are a proxy for stays, not a count.
+# --------------------------------------------------------------------------
+# Source for all three base values: Inside Airbnb "Data Assumptions" page
+# (insideairbnb.com/data-assumptions, "San Francisco Model"). Script 05 checks
+# that these constants reproduce estimated_occupancy_l365d in OUR data exactly.
+# Share of stays that leave a review. Inside Airbnb uses 50%, chosen because it
+# sits between the two published figures below.
+REVIEW_RATE = 0.50
+# Sensitivity values (same page): 72% (Airbnb's own claim, used by the San
+# Francisco Planning Dept; more reviews per stay -> FEWER stays -> lower
+# revenue) and 30.5% (SF Budget and Legislative Analyst, from the New York
+# Attorney General's 2014 data; -> MORE stays -> higher revenue).
+REVIEW_RATE_HIGH = 0.72    # gives the LOW nights case
+REVIEW_RATE_LOW = 0.305    # gives the HIGH nights case
+# Nights per stay: 3 where Airbnb has published no city figure (none for
+# Vancouver); a listing's minimum_nights is used instead if it is higher.
+AVG_STAY_NIGHTS = 3
+# Cap on nights booked per year: 70% of 365, rounded down ("a highly occupied
+# hotel"). Keeps listings with many reviews from being credited 365+ nights.
+MAX_OCCUPANCY_SHARE = 0.70
+MAX_NIGHTS_PER_YEAR = int(MAX_OCCUPANCY_SHARE * 365)   # 255
