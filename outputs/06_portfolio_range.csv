@@ -1,0 +1,7 @@
+side,ptype,beds,units,invested,hybrid_p10,hybrid_p50,hybrid_p90,hybrid_noi_p50,A_no_tax_p10,A_no_tax_p50,A_no_tax_p90,vacancy_tax_pct_of_budget
+East,apartment,1,14,9391228,1.03,1.81,2.82,181271,0.7,1.63,2.68,3.56
+East,apartment,2,14,9391228,1.53,2.69,4.2,268894,0.76,2.22,4.98,3.56
+East,detached,3,5,8329570,0.28,0.96,1.84,96274,-0.19,0.58,1.54,3.22
+West,apartment,1,12,9473136,1.15,1.86,2.72,186242,0.93,1.87,2.94,3.61
+West,apartment,2,12,9473136,2.28,3.42,4.96,342347,1.54,2.77,4.13,3.61
+West,detached,3,3,8969073,0.18,0.87,1.92,87131,-0.39,0.33,1.61,3.48

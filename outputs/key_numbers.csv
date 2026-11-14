@@ -55,3 +55,7 @@ revenue_rate_high_median,42547.0,CAD/yr,05_revenue.py,base nights x June rate
 revenue_nights_low_median,26750.0,CAD/yr,05_revenue.py,review rate 72% x base rate
 revenue_nights_high_median,56084.0,CAD/yr,05_revenue.py,review rate 30.5% x base rate
 revenue_ratio_to_inside_airbnb,0.871,ratio,05_revenue.py,median of per-listing (ours / estimated_revenue_l365d)
+peak_review_share,62.9,% of reviews,06_returns.py,"May-Oct share, in-scope listings, Jun 2024 - May 2026"
+ramp_up_factor,1.0,ratio,06_returns.py,"year-1 / year-2 reviews, listings first reviewed Jun 2023 - Jun 2024, capped at 1"
+midterm_listings_used,944.0,listings,06_returns.py,"entire homes, 30+ night minimum, 30+ night quote"
+midterm_reviewed_share,35.3,% of those,06_returns.py,at least 1 review in last 12 months

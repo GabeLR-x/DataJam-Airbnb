@@ -314,6 +314,36 @@ and stand in for 2027; a listing open for less than 12 months is understated.
 
 ---
 
+## #12 Operating model: hybrid over full-time short stays (DRAFT, Nov 14; numbers from script 06, first pass)
+
+**Decided.** Lead with the negative result: after vacancy taxes, full-time short-term rental does not beat
+long-term rental in the City of Vancouver. The recommended structure is the hybrid (short stays May-Oct,
+30+ night stays Nov-Apr), which meets the occupancy test of both vacancy taxes (#6).
+
+**Alternatives.** (a) Full-time short stays, taxes charged. (b) Full-time short stays, taxes assumed away.
+(c) Plain long-term rental at CMHC rents.
+
+**Evidence** (`src/06_returns.py`, `outputs/06_three_models_by_segment.csv`). Net yield on all-in cost,
+median comparable listing: full-time with taxes is negative in all six segments (-1.4% to -4.0%); hybrid
++0.5% to +2.5%; long-term +0.9% to +2.5%. At the median the hybrid only matches long-term rental; at the
+top-quartile listing it is ahead (West 2-bed apartment 4.5% vs 2.5%). 62.9% of reviews fall in May-Oct.
+Monthly-stay listings are priced below CMHC rents and only about a third had a review in the last 12
+months, so winter demand is the weakest assumption.
+
+**Tested and did not hold.** Multi-listing hosts earn less, not more, than single-listing hosts (median
+about $28,500 vs $42,200). No first-year penalty for new listings: year-1 / year-2 reviews = 1.17 on 430
+listings (survivors only), so no ramp-up cut is applied.
+
+**How it changed results.** West 1-bed apartment: -2.1% (full-time, taxes) -> +1.6% (hybrid). Portfolio of
+12-14 apartments: hybrid P10-P90 about 1% to 5% of $10M per year; 3-5 houses about 0.2% to 1.9%.
+
+**Limits.** Cost inputs in script 06 marked "assumption" are not yet sourced. One GVR apartment benchmark
+is used for 1- and 2-bed units, which flatters 2-bed yields. Neighbourhood -> East/West and property type
+-> apartment/detached mappings are in script 06; guest suites and guesthouses (621 listings) are excluded
+because DDD cannot buy them separately from the house.
+
+---
+
 ## Open items found in data quality (not yet decided)
 
 These came out of `02_data_quality.py` and need a decision before 03.

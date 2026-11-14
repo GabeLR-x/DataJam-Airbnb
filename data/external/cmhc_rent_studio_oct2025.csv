@@ -1,0 +1,36 @@
+Vancouver — Rental Market Statistics Summary by Zone
+October 2025 Row / Apartment Studio
+,Vacancy Rate (%),,Availability Rate (%),,Average Rent ($),,Median Rent ($),,% Change,,Units,
+West End/Stanley Park,2.2,c ,**,,"1,684",b ,"1,800",c ,++,,684,
+English Bay,5.0,d ,**,,"1,746",b ,"1,643",b ,**,,902,
+Downtown,4.5,c ,**,,"1,839",b ,"1,798",a ,4.9,d ,"2,562",
+South Granville/Oak,2.6,b ,**,,"1,525",a ,"1,500",a ,++,,"1,806",
+Kitsilano/Point Grey,1.3,a ,**,,"1,679",b ,"1,699",b ,**,,916,
+Westside/Kerrisdale,3.0,c ,**,,"1,956",b ,"1,950",d ,++,,325,
+Marpole,**,,**,,"1,435",b ,"1,495",c ,++,,326,
+Mount Pleasant/Renfrew Heights,3.5,d ,**,,"1,798",a ,"1,900",b ,**,,"1,503",
+East Hastings,4.4,c ,**,,"1,689",a ,"1,725",a ,++,,"1,231",
+Southeast Vancouver,**,,**,,"1,366",c ,"1,300",d ,**,,416,
+University Endowment Lands,0.9,d ,**,,"1,883",b ,"1,800",b ,++,,261,
+Central Park/Metrotown,**,,**,,"1,561",b ,**,,++,,285,
+Southeast Burnaby,**,,**,,"1,429",d ,**,,++,,175,
+North Burnaby,**,,**,,"1,292",b ,"1,038",d ,**,,282,
+New Westminster,**,,**,,"1,531",a ,"1,600",b ,**,,"1,213",
+North Vancouver CY,2.9,c ,**,,"1,681",a ,"1,818",c ,++,,698,
+North Vancouver DM,**,,**,,**,,**,,**,,49,
+West Vancouver,**,,**,,"1,914",b ,"1,864",c ,**,,245,
+Richmond,2.3,c ,**,,"1,547",b ,"1,544",c ,++,,350,
+Delta,0.0,d ,**,,"1,235",b ,**,,**,,92,
+Surrey,6.5,c ,**,,"1,606",a ,"1,663",a ,**,,309,
+White Rock,**,,**,,"1,227",a ,"1,350",b ,++,,73,
+Langley City and Langley DM,0.0,d ,**,,"1,354",b ,"1,250",c ,++,,104,
+Tri-Cities,5.4,d ,**,,"1,640",b ,"1,740",c ,++,,397,
+Maple Ridge/Pitt Meadows,**,,**,,980,b ,979,c ,**,,22,
+Vancouver,3.9,b ,**,,"1,667",a ,"1,700",a ,4.2,c ,"15,226",
+
+Notes
+"The following letter codes are used to indicate the reliability of the estimates: a — Excellent, b — Very good, c — Good, d — Poor (Use with Caution))"
+** — Data suppressed to protect confidentiality or data not statistically reliable
+++ — Change in rent is not statistically significant. This means that the change in rent is not statistically different than zero (0). (Applies only to % Change of Average Rent Tables).
+"CMA, CA and CSD definitions are based on 2021 Census Geography Definitions"
+Source,CMHC Rental Market Survey
